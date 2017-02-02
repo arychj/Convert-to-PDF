@@ -19,6 +19,7 @@ namespace Convert_to_PDF.Converters {
             excel.Visible = false;
             excel.ScreenUpdating = false;
 
+            File.WriteAllBytes(filenameInput, bDocument);
             Workbook workbook = excel.Workbooks.Open(filenameInput);
 
             workbook.Activate();
@@ -26,8 +27,7 @@ namespace Convert_to_PDF.Converters {
 
             workbook = null;
 
-            // word has to be cast to type _Application so that it will find
-            // the correct Quit method.
+            // excel has to be cast to type _Application so that it will find the correct Quit method.
             ((_Application)excel).Quit();
             excel = null;
 
